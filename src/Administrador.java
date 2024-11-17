@@ -1,3 +1,5 @@
+import javax.swing.JOptionPane;
+import javax.swing.JPopupMenu;
 
 public class Administrador extends Usuario {
 	
@@ -23,8 +25,12 @@ public class Administrador extends Usuario {
 	}
 	
 	public void verMovimientos() {
-		for (int i = 0; i < this.movimiento.getMovimiento(); i++) {
-			
+		
+		
+		for (int i = 0; i < this.getMovimiento().getCliente().getCuenta().getMovimientos().size(); i++) {
+			for (Movimiento movimiento : this.getMovimiento().getCliente().getCuenta().getMovimientos()) {
+				JOptionPane.showMessageDialog(null, movimiento);
+			}
 		}
 	}
 	

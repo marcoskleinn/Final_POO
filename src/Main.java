@@ -10,7 +10,7 @@ public class Main {
 		Cliente cliente1 = new Cliente();
 		Cliente cliente2 = new Cliente();
 		Administrador admin = new Administrador(null, null, null, 0, null);
-
+		cliente1.setCuenta(new Cuenta(0, 0)); // Inicializamos la cuenta antes de usarla
 		 
 		 String[] opciones = {
 			"registrarse", "iniciar sesion", "transaccion", "movimientos", "salir"	 
@@ -34,7 +34,6 @@ public class Main {
 				
 			case 2:
 				cliente2.setNombre("Juan");
-				
 				cliente1.Accion(cliente2);
 				
 				break;		

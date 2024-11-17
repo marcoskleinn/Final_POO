@@ -88,11 +88,6 @@ public abstract class Usuario {
 			
 		} while (opcion != 2);
 		
-		this.setNombre(JOptionPane.showInputDialog("Ingrese su nombre"));
-		this.setContrasena(JOptionPane.showInputDialog("Ingrese una contraseña"));
-		
-		
-		
 	
 	}
 	public void Menu() {

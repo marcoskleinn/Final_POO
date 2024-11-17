@@ -50,13 +50,12 @@ public class Cliente extends Usuario{
 	                double transferencia = Double.parseDouble(JOptionPane.showInputDialog("Ingrese cantidad que quiere transferir a " + cliente.getNombre()));
 	                if (transferencia > this.cuenta.getSaldo()) {
 	                    JOptionPane.showMessageDialog(null, "No se puede hacer la transferencia");
+	                    break;
 	                } else {
 	                	this.cuenta.setSaldo(this.cuenta.getSaldo() - transferencia);
 	                    JOptionPane.showMessageDialog(null, "Transferencia enviada a " + cliente.getNombre());
 	                    this.cuenta.getMovimientos().add(new Movimiento(LocalDateTime.now(), "Transferencia desde la cuenta " + this.getDni() + " monto " + transferencia,this.cuenta.getMovimientos().size(),this));
 	                }
-	                break;
-
 	            case 1: // Depósito
 	                double depositar = Double.parseDouble(JOptionPane.showInputDialog("Ingrese cantidad que quiere depositar"));
 	                this.cuenta.setSaldo(this.cuenta.getSaldo() + depositar);
@@ -74,7 +73,7 @@ public class Cliente extends Usuario{
 	                break;
 
 	            default:
-	                JOptionPane.showMessageDialog(null, "Opción inválida");
+	                JOptionPane.showMessageDialog(null, "Gracias por ser parte de nuestro banco");
 	                break;
 	        }
 	    } while (opcion != 3);
