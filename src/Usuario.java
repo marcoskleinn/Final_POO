@@ -45,9 +45,48 @@ public abstract class Usuario {
 		return "Usuario [nombre=" + nombre + ", dni=" + dni + ", contrasena=" + contrasena + "]";
 	}
 	
+	public void registrarse() {
+		this.setDni(JOptionPane.showInputDialog("ingrese su dni"));
+		this.setNombre(JOptionPane.showInputDialog("Ingrese su nombre"));
+		this.setContrasena(JOptionPane.showInputDialog("Ingrese su contraseña"));
+
+					
+					if (this.getNombre().isEmpty() || this.getNombre() == null && this.getDni().isEmpty() || this.getDni() == null && 
+						this.getContrasena().isEmpty() || this.getContrasena() == null ) {
+						JOptionPane.showMessageDialog(null, "Error");
+					} else {
+						
+					Usuario.getUsuarios().add((Cliente) this);
+				}
+	}
 	
 	
 	public void Login() {
+		
+		int opcion = 0;
+		String[] tipoUsuario = {
+			"cliente", "admin", "salir"
+		};
+		
+		do {
+			opcion = JOptionPane.showOptionDialog(null, tipoUsuario, contrasena, opcion, opcion, null, tipoUsuario, tipoUsuario);
+			switch (opcion) {
+			case 0:
+				this.setDni(JOptionPane.showInputDialog("ingrese su dni"));
+				this.setNombre(JOptionPane.showInputDialog("Ingrese su nombre"));
+				JOptionPane.showMessageDialog(null, "Bienvenido " + this.getNombre());
+				break;
+			case 1:
+				this.setDni(JOptionPane.showInputDialog("ingrese su dni"));
+				this.setNombre(JOptionPane.showInputDialog("Ingrese su nombre"));
+				JOptionPane.showMessageDialog(null, "Bienvenido " + this.getNombre());
+				break;		
+
+			default:
+				break;
+			}
+			
+		} while (opcion != 2);
 		
 		this.setNombre(JOptionPane.showInputDialog("Ingrese su nombre"));
 		this.setContrasena(JOptionPane.showInputDialog("Ingrese una contraseña"));
