@@ -56,7 +56,7 @@ public abstract class Usuario {
 						JOptionPane.showMessageDialog(null, "Error");
 					} else {
 						
-					Usuario.getUsuarios().add((Cliente) this);
+					Usuario.getUsuarios().addAll(Cliente.getUsuarios());
 				}
 	}
 	
@@ -72,9 +72,22 @@ public abstract class Usuario {
 			opcion = JOptionPane.showOptionDialog(null, tipoUsuario, contrasena, opcion, opcion, null, tipoUsuario, tipoUsuario);
 			switch (opcion) {
 			case 0:
+				
 				this.setDni(JOptionPane.showInputDialog("ingrese su dni"));
 				this.setNombre(JOptionPane.showInputDialog("Ingrese su nombre"));
-				JOptionPane.showMessageDialog(null, "Bienvenido " + this.getNombre());
+				
+				for (int i = 0; i < Usuario.getUsuarios().size(); i++) {
+					if (Usuario.getUsuarios().isEmpty()) {
+						JOptionPane.showMessageDialog(null, "No hay usuarios registrados");
+					} else {
+						
+						JOptionPane.showMessageDialog(null, "Bienvenido " + this.getNombre());
+						
+					}
+
+				}
+				
+				
 				break;
 			case 1:
 				this.setDni(JOptionPane.showInputDialog("ingrese su dni"));

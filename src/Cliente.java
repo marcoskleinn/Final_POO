@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import javax.swing.JOptionPane;
@@ -54,7 +55,8 @@ public class Cliente extends Usuario{
 	                } else {
 	                	this.cuenta.setSaldo(this.cuenta.getSaldo() - transferencia);
 	                    JOptionPane.showMessageDialog(null, "Transferencia enviada a " + cliente.getNombre());
-	                    this.cuenta.getMovimientos().add(new Movimiento(LocalDateTime.now(), "Transferencia desde la cuenta " + this.getDni() + " monto " + transferencia,this.cuenta.getMovimientos().size(),this));
+	                    JOptionPane.showMessageDialog(null, "Ahora su estado de cuenta es de " + this.cuenta.getSaldo());
+	                    this.cuenta.getMovimientos().add(new Movimiento(LocalDate.now(), "pago", cliente));
 	                }
 	            case 1: // Depósito
 	                double depositar = Double.parseDouble(JOptionPane.showInputDialog("Ingrese cantidad que quiere depositar"));
