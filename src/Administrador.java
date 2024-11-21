@@ -51,6 +51,18 @@ public class Administrador extends Usuario {
 	}
 	
 	
+	
+	
+
+	@Override
+	public String toString() {
+		return "Administrador [nroAdmin=" + nroAdmin + ", movimeintos=" + movimeintos + ", getMovimeintos()="
+				+ getMovimeintos() + "]";
+	}
+
+
+
+
 
 	public void verMovimientos() {
 		String[] movimietosEjemplo = {
@@ -88,7 +100,7 @@ public class Administrador extends Usuario {
 			}*/
 			
 			for (Movimiento movi : this.getMovimeintos()) {
-				JOptionPane.showMessageDialog(null, movi);
+				JOptionPane.showMessageDialog(null, movi.toString());
 			}
 			
 	}
