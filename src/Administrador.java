@@ -80,11 +80,15 @@ public class Administrador extends Usuario {
 		
 	
 		
-			for (int i = 0; i < this.movimeintos.size(); i++) {
+			/*for (int i = 0; i < this.movimeintos.size(); i++) {
 				if (this.movimeintos.isEmpty()) {
 					JOptionPane.showMessageDialog(null, "No tiene movimientos hasta el momento");
 				}
 				JOptionPane.showMessageDialog(null, this.getMovimeintos());
+			}*/
+			
+			for (Movimiento movi : this.getMovimeintos()) {
+				JOptionPane.showMessageDialog(null, movi);
 			}
 			
 	}
