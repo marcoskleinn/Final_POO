@@ -4,7 +4,6 @@ public class Main {
 	public static void main(String[] args) {
 		
 		
-		JOptionPane.showMessageDialog(null, Cliente.getUsuarios());
 		 
 		Usuario cliente = new Cliente();
 		Cliente cliente1 = new Cliente();
@@ -20,7 +19,7 @@ public class Main {
 		 int opcion = 0;
 		 
 		 do {
-			 opcion = JOptionPane.showOptionDialog(null, "Menu", null, opcion, opcion, null, opciones, opciones);
+			 opcion = JOptionPane.showOptionDialog(null, "Menu","", 0, 0, null, opciones, opciones[0]);
 			 switch (opcion) {
 			case 0:
 				
@@ -35,6 +34,7 @@ public class Main {
 				
 			case 2:
 				cliente2.setNombre("Juan");
+				cliente1.setDni("111");
 				cliente1.Accion(cliente2);
 				
 				break;		
