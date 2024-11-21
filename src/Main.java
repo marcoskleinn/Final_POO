@@ -10,6 +10,7 @@ public class Main {
 		Cliente cliente1 = new Cliente();
 		Cliente cliente2 = new Cliente();
 		Administrador admin = new Administrador(null, null, null, 0, null);
+		
 		cliente1.setCuenta(new Cuenta(0, 0)); // Inicializamos la cuenta antes de usarla
 		 
 		 String[] opciones = {
