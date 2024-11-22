@@ -2,7 +2,7 @@ import java.time.LocalDate;
 import java.util.LinkedList;
 
 import javax.swing.JOptionPane;
-import javax.swing.JPopupMenu;
+
 
 public class Administrador extends Usuario {
 	
@@ -59,8 +59,14 @@ public class Administrador extends Usuario {
 		return "Administrador [nroAdmin=" + nroAdmin + ", movimeintos=" + movimeintos + ", getMovimeintos()="
 				+ getMovimeintos() + "]";
 	}
+
+
+
+
+
 	
-	
+		
+		
 
 
 
@@ -72,35 +78,6 @@ public class Administrador extends Usuario {
 		};
 		
 	
-		/*movimiento.setDetalle(movimietosEjemplo[(int)(Math.random()*movimietosEjemplo.length)]);
-
-		this.getMovimiento().getCliente().getCuenta().getMovimientos().add(movimiento);
-		movimiento.setDetalle(movimietosEjemplo[(int)(Math.random()*movimietosEjemplo.length)]);
-		this.getMovimiento().getCliente().getCuenta().getMovimientos().add(movimiento);
-		movimiento.setDetalle(movimietosEjemplo[(int)(Math.random()*movimietosEjemplo.length)]);
-
-		this.getMovimiento().getCliente().getCuenta().getMovimientos().add(movimiento);
-		
-		for (Movimiento movimiento : this.getMovimiento().getCliente().getCuenta().getMovimientos()) {
-			movimientosDetalle = movimientosDetalle + movimiento.getDetalle() + "\n";
-		}
-		
-		
-		String[] detalles = movimientosDetalle.split("\n"); 
-		String seleccionado = (String)JOptionPane.showInputDialog(null, "Elija detalle",
-				"", 0, null, detalles, detalles[0]);
-	
-		JOptionPane.showMessageDialog(null, "Selecciono el movimientio;: " + seleccionado);*/
-		
-	
-		
-			/*for (int i = 0; i < this.movimeintos.size(); i++) {
-				if (this.movimeintos.isEmpty()) {
-					JOptionPane.showMessageDialog(null, "No tiene movimientos hasta el momento");
-				}
-				JOptionPane.showMessageDialog(null, this.getMovimeintos());
-			}*/
-			
 		if (cliente.getCuenta().getMovimientos().isEmpty()) {
 	        JOptionPane.showMessageDialog(null, "No tiene movimientos en su cuenta");
 	        return; // Salimos del método si no hay movimientos
@@ -118,15 +95,12 @@ public class Administrador extends Usuario {
 
 	    // Mostramos todos los movimientos en un cuadro de diálogo
 	    JOptionPane.showMessageDialog(null, "Movimientos realizados:\n" + movimientosDetalle);
-	}
-			
 	
+	    	
+	
+}	
 }
 	
 	
-	
-	
-
-			
 	
 	
