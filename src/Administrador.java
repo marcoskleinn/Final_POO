@@ -73,32 +73,24 @@ public class Administrador extends Usuario {
 
 
 	public void verMovimientos(Cliente cliente) {
-		String[] movimietosEjemplo = {
-				"Pago","Transferencia","Deposito"
-		};
-		
 	
 		if (cliente.getCuenta().getMovimientos().isEmpty()) {
 	        JOptionPane.showMessageDialog(null, "No tiene movimientos en su cuenta");
-	        return; // Salimos del método si no hay movimientos
+	        
+	    } else {
+	    	String movimientosDetalle = ""; 
+	    	
+	    	 for (Movimiento movimiento : cliente.getCuenta().getMovimientos()) {
+	 	        movimientosDetalle += "Fecha: " + movimiento.getFecha() + 
+	 	                              ", Detalle: " + movimiento.getDetalle() + 
+	 	                              ", Cliente : " + movimiento.getCliente().getNombre() + "\n";
+	 	    }
+	 	    JOptionPane.showMessageDialog(null, "Movimientos realizados:\n" + movimientosDetalle);
+	    	
 	    }
-
-	    // Creamos una cadena que irá concatenando todos los movimientos
-	    String movimientosDetalle = ""; 
-
-	    // Recorremos la lista de movimientos y los agregamos a la cadena
-	    for (Movimiento movimiento : cliente.getCuenta().getMovimientos()) {
-	        movimientosDetalle += "Fecha: " + movimiento.getFecha() + 
-	                              ", Detalle: " + movimiento.getDetalle() + 
-	                              ", Cliente relacionado: " + movimiento.getCliente().getNombre() + "\n";
-	    }
-
-	    // Mostramos todos los movimientos en un cuadro de diálogo
-	    JOptionPane.showMessageDialog(null, "Movimientos realizados:\n" + movimientosDetalle);
-	
 	    	
 	
-}	
+	}	
 }
 	
 	
