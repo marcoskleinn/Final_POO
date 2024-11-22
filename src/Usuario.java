@@ -1,12 +1,16 @@
+import java.util.Collection;
 import java.util.LinkedList;
 
 import javax.swing.JOptionPane;
+import javax.swing.JPopupMenu;
 
 public abstract class Usuario {
 	private String nombre;
 	private String dni;
 	private String contrasena;
-	private static LinkedList<Cliente> usuarios = new LinkedList<Cliente>();
+	private static LinkedList<Cliente> clientes = new LinkedList<Cliente>();
+	private static LinkedList<Administrador> admministradores = new LinkedList<Administrador>();
+
 	public Usuario(String nombre, String dni, String contrasena) {
 		super();
 		this.nombre = nombre;
@@ -35,76 +39,70 @@ public abstract class Usuario {
 		this.contrasena = contrasena;
 	}
 	public static LinkedList<Cliente> getUsuarios() {
-		return usuarios;
+		return clientes;
 	}
 	public static void setUsuarios(LinkedList<Cliente> usuarios) {
-		Usuario.usuarios = new LinkedList<>();
+		Usuario.clientes = new LinkedList<>();
 	}
 	@Override
 	public String toString() {
 		return "Usuario [nombre=" + nombre + ", dni=" + dni + ", contrasena=" + contrasena + "]";
 	}
 	
-	public void registrarse() {
-		this.setDni(JOptionPane.showInputDialog("ingrese su dni"));
-		this.setNombre(JOptionPane.showInputDialog("Ingrese su nombre"));
-		this.setContrasena(JOptionPane.showInputDialog("Ingrese su contraseña"));
+	public void registrarCliente() {
+		this.setNombre(JOptionPane.showInputDialog("Ingrese el nombre del cliente:"));
+		this.setDni(JOptionPane.showInputDialog("Ingrese el DNI del cliente:"));
+		this.setContrasena(JOptionPane.showInputDialog("Ingrese la contraseña del cliente:"));
+        Cliente clientee = new Cliente(getNombre(), getDni(), getContrasena(), "", null);
+        clientes.add(clientee);
+	}
+	
+	public void registrarAdmin() {
+        Administrador admin = new Administrador(nombre, dni, contrasena, 0, null);
 
-					
-					if (this.getNombre().isEmpty() || this.getNombre() == null && this.getDni().isEmpty() || this.getDni() == null && 
-						this.getContrasena().isEmpty() || this.getContrasena() == null ) {
-						JOptionPane.showMessageDialog(null, "Error");
-					} else {
-						
-					Usuario.getUsuarios().addAll(Cliente.getUsuarios());
-				}
+		this.setNombre(JOptionPane.showInputDialog("Ingrese el nombre del administrador:"));
+		this.setDni(JOptionPane.showInputDialog("Ingrese el dni del administrador:"));
+		this.setContrasena(JOptionPane.showInputDialog("Ingrese la contraseña del administrador:"));
+        admin.setNroAdmin(Integer.parseInt(JOptionPane.showInputDialog("numero de admin: ")));
+        Administrador adminn = new Administrador(getNombre(), getDni(), getContrasena(), admin.getNroAdmin(), null);
+        admministradores.add(adminn);
+
 	}
 	
 	
-	public void Login() {
+	public void Logincliente() {
 		
-		int opcion = 0;
-		String[] tipoUsuario = {
-			"cliente", "admin", "salir"
-		};
-		
-		do {
-			opcion = JOptionPane.showOptionDialog(null, tipoUsuario, contrasena, opcion, opcion, null, tipoUsuario, tipoUsuario);
-			switch (opcion) {
-			case 0:
+
+				String nombre = JOptionPane.showInputDialog("Ingrese su nombre");
+				String dni = JOptionPane.showInputDialog("Ingrese su dni");
 				
-				this.setDni(JOptionPane.showInputDialog("ingrese su dni"));
-				this.setNombre(JOptionPane.showInputDialog("Ingrese su nombre"));
-				
-				for (int i = 0; i < Usuario.getUsuarios().size(); i++) {
-					if (Usuario.getUsuarios().isEmpty()) {
-						JOptionPane.showMessageDialog(null, "No hay usuarios registrados");
+				for (Cliente cliente : clientes) {
+					if (cliente.getNombre().equals(nombre) && cliente.getContrasena().equals(contrasena)) {
+		                JOptionPane.showMessageDialog(null, "Bienvenido, " + nombre);
 					} else {
-						
-						JOptionPane.showMessageDialog(null, "Bienvenido " + this.getNombre());
-						
+						JOptionPane.showMessageDialog(null, "error");
 					}
-
-				}
-				
-				
-				break;
-			case 1:
-				this.setDni(JOptionPane.showInputDialog("ingrese su dni"));
-				this.setNombre(JOptionPane.showInputDialog("Ingrese su nombre"));
-				JOptionPane.showMessageDialog(null, "Bienvenido " + this.getNombre());
-				break;		
-
-			default:
-				break;
-			}
-			
-		} while (opcion != 2);
-		
 	
+				}
 	}
-	public void Menu() {
+	
+	public void loginAdmin() {
+		
+		
+
+		String nombre = JOptionPane.showInputDialog("Ingrese su nombre");
+        int nroAdmin = Integer.parseInt(JOptionPane.showInputDialog("Ingrese su número de administrador:"));
+		
+		for (Administrador administrador : admministradores) {
+			if (administrador.getNombre().equals(nombre) && administrador.getNroAdmin() == nroAdmin) {
+                JOptionPane.showMessageDialog(null, "Bienvenido, " + nombre);
+			} else {
+				JOptionPane.showMessageDialog(null, "Error");
+			}
+		}
+		
 		
 	}
+
 
 }

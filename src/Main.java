@@ -10,10 +10,11 @@ public class Main {
 		Cliente cliente2 = new Cliente();
 		Administrador admin = new Administrador(null, null, null, 0, null);
 		
+		
 		cliente1.setCuenta(new Cuenta(0, 0)); // Inicializamos la cuenta antes de usarla
 		 
 		 String[] opciones = {
-			"registrarse", "iniciar sesion", "transaccion", "movimientos", "salir"	 
+			"registrar cliente", "iniciar sesion cliente", "transaccion", "registrar administrador",  "iniciar sesion administrador", "movimientos", "salir"	 
 		 };
 	
 		 int opcion = 0;
@@ -23,27 +24,50 @@ public class Main {
 			 switch (opcion) {
 			case 0:
 				
-				cliente.registrarse();
+				cliente.registrarCliente();;
 				
 				break;
 			case 1:
 				
-				cliente.Login();
+				cliente.Logincliente();
 				
 				break;	
 				
 			case 2:
 				cliente2.setNombre("Juan");
-				cliente1.setDni("111");
+				cliente.setDni("111");
 				cliente1.Accion(cliente2);
 				
 				break;		
 			case 3:
+				
+				admin.registrarAdmin();
 				admin.verMovimientos(cliente1);
 				
-				break;			
+				break;	
+				
+			case 4:
+				
+				admin.loginAdmin();
+				
+				break;
+				
+				
+			case 5:
+				
+				admin.verMovimientos(cliente1);
+				
+				break;	
+				
+			case 6:
+				
+				JOptionPane.showMessageDialog(null, "gracias por se parte de neustro banco");
+				
+				break;		
 
 			default:
+				
+				JOptionPane.showMessageDialog(null, "gracias por se parte de neustro banco");
 				break;
 			}
 			
