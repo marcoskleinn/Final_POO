@@ -35,12 +35,6 @@ public class Cuenta {
 		return "Cuenta [nroCuenta=" + nroCuenta + ", saldo=" + saldo + ", movimientos=" + movimientos + "]\n";
 	}
 	
-	public void estadoCuenta() {
-		
-		this.setSaldo(Math.random()* 10000000);
-		JOptionPane.showMessageDialog(null, "Su saldo actual es " + this.getSaldo());
-		
-	}
 	
 	
 }
