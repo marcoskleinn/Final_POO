@@ -31,7 +31,7 @@ public class Movimiento {
 	}
 	@Override
 	public String toString() {
-		return "Movimiento [fecha=" + fecha + ", detalle=" + detalle + ", cliente= " + cliente + "]";
+		return "Movimiento [fecha=" + fecha + ", detalle=" + detalle + ", cliente= " + cliente.getNombre() + "]";
 	}
 	
 }
