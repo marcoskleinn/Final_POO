@@ -77,7 +77,7 @@ public abstract class Usuario {
 				String dni = JOptionPane.showInputDialog("Ingrese su dni");
 				
 				for (Cliente cliente : clientes) {
-					if (cliente.getNombre().equals(nombre) && cliente.getContrasena().equals(contrasena)) {
+					if (cliente.getNombre().equalsIgnoreCase(nombre) && cliente.getDni().equals(dni)) {
 		                JOptionPane.showMessageDialog(null, "Bienvenido, " + nombre);
 					} else {
 						JOptionPane.showMessageDialog(null, "error");
