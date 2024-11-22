@@ -33,12 +33,6 @@ public class Cliente extends Usuario{
 	}
 	
 	
-	public void ingresarASuSaldo() {
-		
-		this.cuenta.estadoCuenta();
-		
-		
-	}
 	
 	public double Accion(Cliente cliente) {
 	    int opcion = 0;
