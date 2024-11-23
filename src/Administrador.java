@@ -19,12 +19,6 @@ public class Administrador extends Usuario {
 	}
 	
 	
-	
-
-
-
-
-
 
 
 	public Administrador(String nombre, String dni, String contrasena) {
@@ -32,12 +26,7 @@ public class Administrador extends Usuario {
 	}
 
 
-
-
-
-
-
-
+	
 
 
 	public int getNroAdmin() {
