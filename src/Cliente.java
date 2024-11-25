@@ -32,9 +32,22 @@ public class Cliente extends Usuario{
 		return "Cliente [tipo=" + tipo + ", cuenta=" + cuenta + ", toString()=" + super.toString() + "\n]";
 	}
 	
+	@Override
+	public void login() {
+		for (Usuario cliente : this.getUsuarios()) {
+			String nombre = validaString("Ingrese su nombre");
+			String dni = validaString("ingrese su dni");
+			if (cliente.getNombre().equalsIgnoreCase(nombre) && cliente.getDni().equals(dni)) {
+                JOptionPane.showMessageDialog(null, "Bienvenido, " + nombre);
+			} else {
+				JOptionPane.showMessageDialog(null, "error");
+			}
+		}
+	}
 	
 	
-	public double Accion(Cliente cliente) {
+	
+	public double Accion(Cliente receptor) {
 	    int opcion = 0;
 	    do {
 	        opcion = JOptionPane.showOptionDialog(null, cuenta,  tipo,  0, 0, null, OpcionesCliente.values(),  OpcionesCliente.values());
@@ -42,22 +55,24 @@ public class Cliente extends Usuario{
 	       
 	        switch (opcion) {
 	            case 0: // Transferencia
-	                double transferencia = Double.parseDouble(JOptionPane.showInputDialog("Ingrese cantidad que quiere transferir a " + cliente.getNombre()));
-	                if (transferencia > this.cuenta.getSaldo()) {
+	                double transferencia = Double.parseDouble(JOptionPane.showInputDialog("Ingrese cantidad que quiere transferir a " + receptor.getNombre()));
+	                if (transferencia > this.cuenta.getSaldo() ||  transferencia <= 0) {
 	                    JOptionPane.showMessageDialog(null, "No se puede hacer la transferencia");
 	                   
 	                } else {
 	                	this.cuenta.setSaldo(this.cuenta.getSaldo() - transferencia);
-	                    JOptionPane.showMessageDialog(null, "Transferencia enviada a " + cliente.getNombre());
+	                    JOptionPane.showMessageDialog(null, "Transferencia enviada a " + receptor.getNombre());
 	                    JOptionPane.showMessageDialog(null, "Ahora su estado de cuenta es de " + this.cuenta.getSaldo());
-	                    this.cuenta.getMovimientos().add(new Movimiento(LocalDate.now(), "pago", cliente));
+	                    this.cuenta.getMovimientos().add(new Movimiento(LocalDate.now(), "pago", this));
+	                    this.cuenta.getMovimientos().add(new Movimiento(LocalDate.now(), "Recibo de plata", receptor));
 	                }
 	                break;
+	               
 	            case 1: // Depósito
 	                double depositar = Double.parseDouble(JOptionPane.showInputDialog("Ingrese cantidad que quiere depositar"));
 	                this.cuenta.setSaldo(this.cuenta.getSaldo() + depositar);
 	                JOptionPane.showMessageDialog(null, "Ahora su saldo es de " + this.cuenta.getSaldo());
-                    this.cuenta.getMovimientos().add(new Movimiento(LocalDate.now(), "deposito", cliente));
+                    this.cuenta.getMovimientos().add(new Movimiento(LocalDate.now(), "deposito", this));
 
 	                break;
 
@@ -68,7 +83,7 @@ public class Cliente extends Usuario{
 	                } else {
 	                    this.cuenta.setSaldo(this.cuenta.getSaldo() - retiro);
 	                    JOptionPane.showMessageDialog(null, "Retiro exitoso, ahora tiene " + this.cuenta.getSaldo());
-	                    this.cuenta.getMovimientos().add(new Movimiento(LocalDate.now(), "retiro", cliente));
+	                    this.cuenta.getMovimientos().add(new Movimiento(LocalDate.now(), "retiro", this));
 
 	                }
 	                break;

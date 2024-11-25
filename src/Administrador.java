@@ -7,14 +7,13 @@ import javax.swing.JOptionPane;
 public class Administrador extends Usuario {
 	
 	
-	private int nroAdmin;
-	private LinkedList<Movimiento> movimeintos;
+	private int nroAdminn;
+	private LinkedList<Movimiento> movimeintos = new LinkedList<Movimiento>();
 
 	
-	public Administrador(String nombre, String dni, String contrasena, int nroAdmin,
-			LinkedList<Movimiento> movimeintos) {
+	public Administrador(String nombre, String dni, String contrasena, int nroAdmin) {
 		super(nombre, dni, contrasena);
-		this.nroAdmin = nroAdmin;
+		this.nroAdminn = nroAdmin;
 		this.movimeintos = new LinkedList<Movimiento>();
 	}
 	
@@ -29,18 +28,22 @@ public class Administrador extends Usuario {
 	
 
 
-	public int getNroAdmin() {
-		return nroAdmin;
+	
+
+
+
+
+
+	public int getNroAdminn() {
+		return nroAdminn;
 	}
 
 
 
 
-
-	public void setNroAdmin(int nroAdmin) {
-		this.nroAdmin = nroAdmin;
+	public void setNroAdminn(int nroAdminn) {
+		this.nroAdminn = nroAdminn;
 	}
-
 
 
 
@@ -63,8 +66,31 @@ public class Administrador extends Usuario {
 
 	@Override
 	public String toString() {
-		return "Administrador [nroAdmin=" + nroAdmin + ", movimeintos=" + movimeintos + ", getMovimeintos()="
+		return "Administrador [nroAdmin=" + getNroAdminn() + ", movimeintos=" + movimeintos + ", getMovimeintos()="
 				+ getMovimeintos() + "]";
+	}
+	
+	@Override
+	public void login() {
+		
+		
+
+		String nombre = validaString("Ingrese su nombre");
+        int nroAdmin = Integer.parseInt(validaString("Ingrese su número de administrador:"));
+		if ( Usuario.getAdmministradores().isEmpty()) {
+			JOptionPane.showMessageDialog(null, "mp ai xd");
+		} else {
+			for (Administrador administrador : Usuario.getAdmministradores()) {
+				if (administrador.getNombre().equals(nombre) && administrador.getNroAdminn() == nroAdmin) {
+	                JOptionPane.showMessageDialog(null, "Bienvenido, " + nombre);
+				} else {
+					JOptionPane.showMessageDialog(null, "Error");
+				}
+			}
+		}
+		
+		
+		
 	}
 
 

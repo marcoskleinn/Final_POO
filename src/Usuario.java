@@ -44,65 +44,51 @@ public abstract class Usuario {
 	public static void setUsuarios(LinkedList<Cliente> usuarios) {
 		Usuario.clientes = new LinkedList<>();
 	}
+	
+	
+	
+	public static LinkedList<Administrador> getAdmministradores() {
+		return admministradores;
+	}
+	public static void setAdmministradores(LinkedList<Administrador> admministradores) {
+		Usuario.admministradores = admministradores;
+	}
 	@Override
 	public String toString() {
 		return "Usuario [nombre=" + nombre + ", dni=" + dni + ", contrasena=" + contrasena + "]";
 	}
 	
 	public void registrarCliente() {
-		this.setNombre(JOptionPane.showInputDialog("Ingrese el nombre del cliente:"));
-		this.setDni(JOptionPane.showInputDialog("Ingrese el DNI del cliente:"));
-		this.setContrasena(JOptionPane.showInputDialog("Ingrese la contraseña del cliente:"));
+		this.setNombre(validaString("Ingrese el nombre del cliente:"));
+		this.setDni(validaString("Ingrese el DNI del cliente:"));
+		this.setContrasena(validaString("Ingrese la contraseña del cliente:"));
         Cliente clientee = new Cliente(getNombre(), getDni(), getContrasena(), "", null);
         clientes.add(clientee);
 	}
 	
 	public void registrarAdmin() {
-        Administrador admin = new Administrador(nombre, dni, contrasena, 0, null);
+        Administrador admin = new Administrador(nombre, dni, contrasena, 0);
 
-		this.setNombre(JOptionPane.showInputDialog("Ingrese el nombre del administrador:"));
-		this.setDni(JOptionPane.showInputDialog("Ingrese el dni del administrador:"));
-		this.setContrasena(JOptionPane.showInputDialog("Ingrese la contraseña del administrador:"));
-        admin.setNroAdmin(Integer.parseInt(JOptionPane.showInputDialog("numero de admin: ")));
-        Administrador adminn = new Administrador(getNombre(), getDni(), getContrasena(), admin.getNroAdmin(), null);
-        admministradores.add(adminn);
+        admin.setNombre(validaString("Ingrese el nombre del administrador:"));
+        admin.setDni(validaString("Ingrese el dni del administrador:"));
+        admin.setContrasena(validaString("Ingrese la contraseña del administrador:"));
+        admin.setNroAdminn(Integer.parseInt(validaString("numero de admin: ")));
+        admministradores.add(admin);
 
+	}
+	public void login() {
+		
+	}
+	public static String validaString(String mensaje) {
+		String  palabra = "";
+		
+		do {
+			palabra = JOptionPane.showInputDialog(mensaje);
+		} while (palabra.isEmpty());
+		return palabra;
 	}
 	
 	
-	public void Logincliente() {
-		
-
-				String nombre = JOptionPane.showInputDialog("Ingrese su nombre");
-				String dni = JOptionPane.showInputDialog("Ingrese su dni");
-				
-				for (Cliente cliente : clientes) {
-					if (cliente.getNombre().equalsIgnoreCase(nombre) && cliente.getDni().equals(dni)) {
-		                JOptionPane.showMessageDialog(null, "Bienvenido, " + nombre);
-					} else {
-						JOptionPane.showMessageDialog(null, "error");
-					}
-	
-				}
-	}
-	
-	public void loginAdmin() {
-		
-		
-
-		String nombre = JOptionPane.showInputDialog("Ingrese su nombre");
-        int nroAdmin = Integer.parseInt(JOptionPane.showInputDialog("Ingrese su número de administrador:"));
-		
-		for (Administrador administrador : admministradores) {
-			if (administrador.getNombre().equals(nombre) && administrador.getNroAdmin() == nroAdmin) {
-                JOptionPane.showMessageDialog(null, "Bienvenido, " + nombre);
-			} else {
-				JOptionPane.showMessageDialog(null, "Error");
-			}
-		}
-		
-		
-	}
 
 
 }

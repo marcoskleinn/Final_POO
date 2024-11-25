@@ -8,13 +8,13 @@ public class Main {
 		Usuario cliente = new Cliente();
 		Cliente cliente1 = new Cliente();
 		Cliente cliente2 = new Cliente();
-		Administrador admin = new Administrador(null, null, null, 0, null);
+		Administrador admin = new Administrador(null, null, null, 0);
 		
 		
 		cliente1.setCuenta(new Cuenta(0, 0)); // Inicializamos la cuenta antes de usarla
 		 
 		 String[] opciones = {
-			"registrar cliente", "iniciar sesion cliente", "transaccion", "registrar administrador",  "iniciar sesion administrador", "movimientos", "salir"	 
+			"registrar cliente", "registrar administrador", "iniciar sesion cliente", "iniciar sesion administrador",  "transaccion", "movimientos", "salir"	 
 		 };
 	
 		 int opcion = 0;
@@ -29,26 +29,27 @@ public class Main {
 				break;
 			case 1:
 				
-				cliente.Logincliente();
+				cliente.registrarAdmin();
 				
 				break;	
 				
 			case 2:
-				cliente2.setNombre("Juan");
-				cliente.setDni("111");
-				cliente1.Accion(cliente2);
+				
+				cliente1.login();
+				
 				
 				break;		
 			case 3:
 				
-				admin.registrarAdmin();
-				admin.verMovimientos(cliente1);
+				admin.login();
+				
 				
 				break;	
 				
 			case 4:
+				cliente2.setNombre("Juan");
+				cliente1.Accion(cliente2);
 				
-				admin.loginAdmin();
 				
 				break;
 				
@@ -56,6 +57,8 @@ public class Main {
 			case 5:
 				
 				admin.verMovimientos(cliente1);
+				
+				
 				
 				break;	
 				
